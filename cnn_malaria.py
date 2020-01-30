@@ -141,7 +141,7 @@ lr_schedule = tf.keras.optimizers.schedules.ExponentialDecay(
     staircase=True)
 
 # compile the model with loss as categorical_crossentropy and using adam optimizer you can test result by trying RMSProp as well as Momentum
-  model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate = lr_schedule),
+model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate = lr_schedule),
               loss = tf.keras.losses.BinaryCrossentropy(),
               metrics = [tf.keras.metrics.BinaryAccuracy()])
 #model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
