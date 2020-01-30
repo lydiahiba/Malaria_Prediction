@@ -22,8 +22,8 @@ from skimage.transform import resize
 import random
 
 
-PARA_DIR = "/content/cell_images/cell_images/Parasitized/"
-UNIF_DIR =  "/content/cell_images/cell_images/Uninfected/"
+PARA_DIR = "/home/h_lydia_alili/cell_images/Parasitized/"
+UNIF_DIR =  "/home/h_lydia_alili/cell_images/Uninfected/"
 
 import os
 Pimages = os.listdir(PARA_DIR)
@@ -34,14 +34,14 @@ sample_normal = random.sample(Nimages,6)
 f,ax = plt.subplots(2,3,figsize=(15,9))
 
 for i in range(0,6):
-    im = cv2.imread('/content/cell_images/cell_images/Uninfected/'+sample_normal[1])
+    im = cv2.imread('/home/h_lydia_alili/cell_images/Uninfected/'+sample_normal[1])
     ax[i//3,i%3].imshow(im)
     ax[i//3,i%3].axis('off')
 f.suptitle('Uninfected')
 plt.show()
 
-PARA_DIR = "/content/cell_images/cell_images/Parasitized/"
-UNIF_DIR =  "/content/cell_images/cell_images/Uninfected/"
+PARA_DIR = "/home/h_lydia_alili/cell_images/Parasitized/"
+UNIF_DIR =  "/home/h_lydia_alili/cell_images/Uninfected/"
 
 sample_normal = random.sample(Pimages,6)
 f,ax = plt.subplots(2,3,figsize=(15,9))
@@ -57,13 +57,13 @@ plt.show()
 data=[]
 labels=[]
 
-#Parasitized=os.listdir("/content/cell_images/cell_images/Parasitized/")
-#Uninfected=os.listdir("/content/cell_images/cell_images/Uninfected/")
+Parasitized=os.listdir("/home/h_lydia_alili/cell_images/Parasitized/")
+Uninfected=os.listdir("/home/h_lydia_alili/cell_images/Uninfected/")
 
 
 for a in Parasitized:
     try:
-        image=cv2.imread("/content/cell_images/cell_images/Parasitized/"+a)
+        image=cv2.imread("/home/h_lydia_alili/cell_images/Parasitized/"+a)
         image_from_array = Image.fromarray(image, 'RGB')
         size_image = image_from_array.resize((75,75))
         data.append(np.array(size_image))
@@ -74,7 +74,7 @@ for a in Parasitized:
 
 for b in Uninfected:
     try:
-        image=cv2.imread("/content/cell_images/cell_images/Uninfected/"+b)
+        image=cv2.imread("/home/h_lydia_alili/cell_images/Uninfected/"+b)
         image_from_array = Image.fromarray(image, 'RGB')
         size_image = image_from_array.resize((75, 75))
         data.append(np.array(size_image))
@@ -160,9 +160,9 @@ h=model.fit(x_train,y_train,batch_size=32,callbacks=callbacks, validation_data=(
 
 import h5py
 
-from numpy import loadtxt
-from keras.models import load_model
-model = load_model('.hdf5')
+#from numpy import loadtxt
+#from keras.models import load_model
+#model = load_model('.hdf5')
 
 score=model.evaluate(x_test,y_test)
 print(score)
