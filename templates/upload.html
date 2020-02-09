@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<style>
+body {font-family: arial, sans serif;}
+.flex-container {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content:center;
+	background-color: #d95700;
+	}
+	.flex-container >div{
+	background-color:#f1f1f1;
+	margin: 10px;
+	padding: 20px;
+	font-size: 10px;
+	}
+	
+	.center-text {text-align: center;}
+	.extra-text {font-size: 0.1em;}
+</style>
+
+</head>
+<title>Web application malaria diagnosis</title>
+
+<body>
+
+
+<div class="center-text"><h1>Web application malaria diagnostics</h1><p></p></div>
+</div>
+
+<p></p>
+</div>
+
+<div class="flex-container">
+<div class="center-text"><h4>L'application vous permets d'effectuer l'aide au diagnostic de la malaria pour vos patients</h4><p>Les fichiers sélectionnés doivent être d'extensions: jpeg, tiff, png</p>
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul class=flashes>
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
+<h4>Sélectionner les fichiers à télécharger</h4>
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+		<p>
+			<input type="file" name="files[]" multiple="">
+		</p>
+    </dl>
+    <p>
+		<input type="submit" value="Submit">
+	</p>
+</form>
+</div>
+
+</body>
+</html>
